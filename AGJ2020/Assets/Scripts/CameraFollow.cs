@@ -8,10 +8,6 @@ public class CameraFollow : MonoBehaviour
     public float smoothTime = 0.3f;
     private Vector3 velocity = Vector3.zero;
 
-    [SerializeField] float originalShakeDuration = 10f;
-
-    [SerializeField] float shakeIntensity = 5f;
-
     bool cameraShaking = false;
 
 
@@ -34,14 +30,13 @@ public class CameraFollow : MonoBehaviour
         
     }
 
-    public void ShakeCamera()
+    public void ShakeCamera(float shakeDuration, float shakeIntensity)
     {
-        StartCoroutine(ShakeCoroutine());
+        StartCoroutine(ShakeCoroutine(shakeDuration, shakeIntensity));
     }
 
-    IEnumerator ShakeCoroutine()
+    IEnumerator ShakeCoroutine(float shakeDuration, float shakeIntensity)
     {
-        float shakeDuration = originalShakeDuration;
         cameraShaking = true;
         while(shakeDuration > 0)
         {
