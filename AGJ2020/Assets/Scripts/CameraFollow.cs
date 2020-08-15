@@ -20,7 +20,7 @@ public class CameraFollow : MonoBehaviour
     {
         if (!cameraShaking)
         {
-            Vector3 targetPosition = target.TransformPoint(0, 2, -10);
+            Vector3 targetPosition = target.TransformPoint(0, 2, -20);
             if (targetPosition.y < 0)
             {
                 targetPosition.y = 0;
@@ -43,6 +43,12 @@ public class CameraFollow : MonoBehaviour
         {
             transform.position = originalPosition + Random.insideUnitSphere * shakeIntensity;
             shakeDuration -= Time.deltaTime;
+            Vector3 targetPosition = target.TransformPoint(0, 2, -15);
+            if (targetPosition.y < 0)
+            {
+                targetPosition.y = 0;
+            }
+            transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
             yield return new WaitForSeconds(Time.deltaTime);
         }
         cameraShaking = false;
