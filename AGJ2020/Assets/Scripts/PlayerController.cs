@@ -5,48 +5,90 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // Properties
-    Rigidbody3D rbody;
+    Rigidbody rb;
 
     //Movement
-    public float speed;
+    public float acceleration;
+    public float maxSpeed;
     public float jumpForce;
-    public float moveVelocity;
+    public float friction;
+
+    private float speed;
+    private float negativeSpeed;
 
     void Start () 
     {
-        rbody = GetComponent<Rigidbody3D>();
+        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
         HandleInput();
+        if (speed > 0)
+        {
+            transform.position += transform.right * speed * Time.deltaTime;
+        }
+        else 
+        {
+            transform.position -= transform.right * negativeSpeed * Time.deltaTime;
+        }
+        print(speed);
     }
 
     void HandleInput () 
     {
         //Jumping
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.W))
-        {
+        {/*
             if (checkGrounded())
             {
-                rbody.velocity = new Vector2(rbody.velocity.x, jumpForce);
-                anim.SetTrigger("Jump");
-            }
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            }*/
         }
 
         //Left Right Movement
-        moveVelocity = Input.GetAxis("Horizontal") * speed;
-        if (moveVelocity > 0) {
-            isFacingRight = true;
-            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-        } 
-        if (moveVelocity < 0) {
-            isFacingRight = false;
-            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * -1, transform.localScale.y, transform.localScale.z);
+        if (Input.GetKey(KeyCode.D) && negativeSpeed == 0)
+        {
+            if (negativeSpeed < 0.1)
+                negativeSpeed = 0;
+
+            if (speed < 0.1)
+                speed = 0.1f;
+
+            speed += speed * acceleration * Time.deltaTime;
+
+            if (speed > 10)
+                speed = 10f;
         }
 
+        else if (Input.GetKey(KeyCode.A) && speed == 0)
+        {
+            if (speed < 0.1)
+                speed = 0;
+
+            if (negativeSpeed < 0.1)
+                negativeSpeed = 0.1f;
+
+            negativeSpeed += negativeSpeed * acceleration * Time.deltaTime;
+
+            if (negativeSpeed > 10)
+                negativeSpeed = 10f;
+        }
+
+        else
+        {
+            if (speed < 1)
+                speed = 0;
+
+            if (negativeSpeed < 1)
+                negativeSpeed = 0;
+
+            speed -= speed *friction * Time.deltaTime;
+            negativeSpeed -= negativeSpeed * friction * Time.deltaTime;
+        }
     }
-        
+
+    /*  
     //Check if Grounded 
     private bool checkGrounded() {
         float distToGround = GetComponent<CapsuleCollider2D>().bounds.extents.y;
@@ -58,5 +100,5 @@ public class PlayerController : MonoBehaviour
         );
 
         return (collision.collider != null);
-    }
+    }*/
 }
