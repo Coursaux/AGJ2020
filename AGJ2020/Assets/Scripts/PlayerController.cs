@@ -39,7 +39,6 @@ public class PlayerController : MonoBehaviour
         {
             transform.position -= transform.right * negativeSpeed * Time.deltaTime;
         }
-        print(speed);
     }
 
     private void HandleTilt()
