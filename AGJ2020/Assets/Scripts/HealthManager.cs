@@ -20,7 +20,7 @@ public class HealthManager : MonoBehaviour
     }
 
     public void AddHealth(float health)
-    {
+    { 
         currentHealth += health;
         if (currentHealth > totalHealth)
             currentHealth = totalHealth;

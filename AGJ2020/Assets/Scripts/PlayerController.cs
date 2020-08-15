@@ -43,10 +43,12 @@ public class PlayerController : MonoBehaviour
 
     private void HandleTilt()
     {
-        float tilt = head.GetTilt();
+        float tilt = head.GetTilt(); //returns value between 0 (all the way down) and 1 (all the way up);
+        float halfwayPoint = 0.5f;
         if (tilt > 0.5)
         {
-            float tiltValue = (tilt - 0.5f) * tiltFactor;
+            float tiltValue = (tilt - halfwayPoint) * tiltFactor;
+            // if player is moving forward, decrease their speed. if player is moving backwards, increase it.
             if (speed > 0)
             {
                 speed -= tiltValue*(speed/maxSpeed);
@@ -56,7 +58,8 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            float tiltValue = (0.5f-tilt) * tiltFactor;
+            float tiltValue = (halfwayPoint-tilt) * tiltFactor;
+            // if player is moving forward, increase their speed. if player is moving backwards, decrease it.
             if (speed > 0)
             {
                 negativeSpeed -= tiltValue * (negativeSpeed / maxSpeed);
@@ -121,6 +124,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //returns speed as a value between -1f and 1f
     public float GetSpeedFactor()
     {
         if (speed > 0)
