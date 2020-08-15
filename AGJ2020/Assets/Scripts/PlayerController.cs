@@ -18,28 +18,8 @@ public class PlayerController : MonoBehaviour
 
     Head head;
 
-    public float speed;
-    public float negativeSpeed;
-
-    public float GetSpeed()
-    {
-        return speed;
-    }
-
-    public float GetNegativeSpeed()
-    {
-        return negativeSpeed;
-    } 
-
-    public void SetSpeed(float inSpeed)
-    {
-        speed = inSpeed;
-    }
-
-    public void SetNegativeSpeed(float inNegativeSpeed)
-    {
-        negativeSpeed = inNegativeSpeed;
-    }
+    private float speed;
+    private float negativeSpeed;
 
     public float GetSpeed()
     {

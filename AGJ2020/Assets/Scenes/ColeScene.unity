@@ -213,7 +213,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &850122252
 GameObject:
@@ -254,8 +254,6 @@ MonoBehaviour:
   jumpForce: 500
   friction: 0.9
   tiltFactor: 0.1
-  speed: 0
-  negativeSpeed: 0
 --- !u!54 &850122254
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -345,10 +343,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 941007859}
   - {fileID: 1355677872}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &850122259
 MonoBehaviour:
@@ -374,6 +371,7 @@ GameObject:
   - component: {fileID: 941007859}
   - component: {fileID: 941007861}
   - component: {fileID: 941007860}
+  - component: {fileID: 941007862}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -392,8 +390,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 850122258}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!81 &941007860
 AudioListener:
@@ -446,6 +444,22 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &941007862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 941007858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04c0d63bf622f6d4ab74994d9c6d6dda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 850122258}
+  smoothTime: 0.3
+  originalShakeDuration: 1
+  shakeIntensity: 0.1
 --- !u!1001 &1291568387
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -536,7 +550,7 @@ Transform:
   m_Children:
   - {fileID: 1634954416}
   m_Father: {fileID: 850122258}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1355677873
 BoxCollider:
@@ -615,9 +629,7 @@ MonoBehaviour:
   tiltFactor: 0.5
   upAcceleration: 0.001
   downAcceleration: 0.001
-  speedFactor: 0.005
-  currentUpAcceleration: 0
-  currentDownAcceleration: 0
+  speedFactor: 0.001
   tiltDamage: 0.5
 --- !u!1 &1634954415
 GameObject:

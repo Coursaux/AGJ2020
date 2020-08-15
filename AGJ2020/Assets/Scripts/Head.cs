@@ -10,8 +10,8 @@ public class Head : MonoBehaviour
 
     [SerializeField] float speedFactor = 0.1f;
 
-    public float currentUpAcceleration = 0f;
-    public float currentDownAcceleration = 0f;
+    private float currentUpAcceleration = 0f;
+    private float currentDownAcceleration = 0f;
 
     HealthManager healthManager;
     [SerializeField] float tiltDamage = 0.5f;
