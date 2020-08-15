@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,17 +14,23 @@ public class PlayerController : MonoBehaviour
     public float jumpForce;
     public float friction;
 
+    [SerializeField] float tiltFactor = 0.1f;
+
+    Head head;
+
     private float speed;
     private float negativeSpeed;
 
     void Start () 
     {
         rb = GetComponent<Rigidbody>();
+        head = GetComponentInChildren<Head>();
     }
 
     void Update()
     {
         HandleInput();
+        HandleTilt();
         if (speed > 0)
         {
             transform.position += transform.right * speed * Time.deltaTime;
@@ -31,6 +38,33 @@ public class PlayerController : MonoBehaviour
         else 
         {
             transform.position -= transform.right * negativeSpeed * Time.deltaTime;
+        }
+    }
+
+    private void HandleTilt()
+    {
+        float tilt = head.GetTilt();
+        if (tilt > 0.5)
+        {
+            float tiltValue = (tilt - 0.5f) * tiltFactor;
+            if (speed > 0)
+            {
+                speed -= tiltValue*(speed/maxSpeed);
+            } else {
+                negativeSpeed += tiltValue*(negativeSpeed/maxSpeed);
+            }
+        }
+        else
+        {
+            float tiltValue = (0.5f-tilt) * tiltFactor;
+            if (speed > 0)
+            {
+                negativeSpeed -= tiltValue * (negativeSpeed / maxSpeed);
+            }
+            else
+            {
+                speed += tiltValue*(speed / maxSpeed);
+            }
         }
     }
 
@@ -82,7 +116,7 @@ public class PlayerController : MonoBehaviour
             if (negativeSpeed < 1)
                 negativeSpeed = 0;
 
-            speed -= speed *friction * Time.deltaTime;
+            speed -= speed * friction * Time.deltaTime;
             negativeSpeed -= negativeSpeed * friction * Time.deltaTime;
         }
     }

@@ -76,19 +76,19 @@ public class Head : MonoBehaviour
         float speed = FindObjectOfType<PlayerController>().GetSpeedFactor();
         float randomSpeedValue = 0f;
         if (speed > 0)
-        {
+        { 
             randomSpeedValue = Random.Range(0f, speed);
         }
         else
         {
             randomSpeedValue = Random.Range(speed, 0f);
         }
-        tiltFactor -= ((randomSpeedValue*randomSpeedValue) * speedFactor);
+        tiltFactor -= ((randomSpeedValue) * speedFactor);
     }
 
-    public float GetTiltFactor() // returns value between 0 and 1;
+    public float GetTilt() // returns value between 0 and 1;
     {
-        return tiltFactor;
+        return tiltFactor;                                                          
     }
 
 }
