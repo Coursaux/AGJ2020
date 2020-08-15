@@ -24,8 +24,6 @@ public class PlayerController : MonoBehaviour
     private float speed;
     private float negativeSpeed;
 
-    private bool playingGame = false;
-
     public float GetSpeed()
     {
         return speed;

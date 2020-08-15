@@ -21,7 +21,7 @@ public class Meteor : MonoBehaviour
     void OnTriggerEnter(Collider collision)
     {
         //Check for a match with the specified name on any GameObject that collides with your GameObject
-        if (collision.gameObject.name == "Character")
+        if (collision.gameObject.name == "Character")                                                                                                                                                                                                               
         {   
             collision.gameObject.GetComponent<HealthManager>().TakeDamage(damage);
         }
