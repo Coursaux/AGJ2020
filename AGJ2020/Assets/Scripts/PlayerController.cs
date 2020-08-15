@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] float tiltFactor = 0.1f;
 
-    Head head;
+    public Head head;
 
     private float speed;
     private float negativeSpeed;
@@ -100,7 +100,6 @@ public class PlayerController : MonoBehaviour
         //Jumping
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W))
         {   
-            print(checkGrounded());
             if (checkGrounded())
             {
                 rb.AddForce(Vector3.up*jumpForce);

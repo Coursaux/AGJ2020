@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9f61da1041adb343a6f2154e6ef75ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frictionMultiplier: 1.1
+  frictionMultiplier: 1.08
 --- !u!23 &4849764231541527572
 MeshRenderer:
   m_ObjectHideFlags: 0
