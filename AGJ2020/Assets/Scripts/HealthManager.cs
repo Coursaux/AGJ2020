@@ -7,11 +7,13 @@ public class HealthManager : MonoBehaviour
     public float totalHealth;
     private float currentHealth;
     CameraFollow cameraShaker;
+    [SerializeField] Canvas playAgainCanvas;
 
     void Start()
     {
         currentHealth = totalHealth;
         cameraShaker = FindObjectOfType<CameraFollow>();
+        playAgainCanvas.enabled = false;
     }
 
     public void TakeDamage(float damage)
@@ -32,6 +34,9 @@ public class HealthManager : MonoBehaviour
     void die()
     {
         if (currentHealth <= 0)
+        {
             gameObject.SetActive(false);
+            playAgainCanvas.enabled = true;
+        }
     }
 }

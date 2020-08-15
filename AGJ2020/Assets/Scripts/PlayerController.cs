@@ -54,25 +54,17 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (playingGame)
-        {
-            HandleInput();
-            HandleTilt();
-            if (speed > 0)
-            {
-                transform.position += transform.right * speed * Time.deltaTime;
-            }
-            else
-            {
-                transform.position -= transform.right * negativeSpeed * Time.deltaTime;
-            }
-            HandleDustTrail();
-        }
-    }
-
-    public void StartGame()
-    {
-        playingGame = true;
+			HandleInput();
+			HandleTilt();
+			if (speed > 0)
+			{
+				transform.position += transform.right * speed * Time.deltaTime;
+			}
+			else
+			{
+				transform.position -= transform.right * negativeSpeed * Time.deltaTime;
+			}
+			HandleDustTrail();
     }
 
     private void HandleTilt()
