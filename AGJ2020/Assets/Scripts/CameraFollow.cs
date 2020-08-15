@@ -38,9 +38,10 @@ public class CameraFollow : MonoBehaviour
     IEnumerator ShakeCoroutine(float shakeDuration, float shakeIntensity)
     {
         cameraShaking = true;
+        Vector3 originalPosition = transform.position;
         while(shakeDuration > 0)
         {
-            transform.position = transform.position + Random.insideUnitSphere * shakeIntensity;
+            transform.position = originalPosition + Random.insideUnitSphere * shakeIntensity;
             shakeDuration -= Time.deltaTime;
             yield return new WaitForSeconds(Time.deltaTime);
         }

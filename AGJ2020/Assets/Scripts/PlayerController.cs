@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
     private float speed;
     private float negativeSpeed;
 
+    public bool playingGame = true;
+
     public float GetSpeed()
     {
         return speed;
@@ -52,17 +54,26 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-			HandleInput();
-			HandleTilt();
-			if (speed > 0)
-			{
-				transform.position += transform.right * speed * Time.deltaTime;
-			}
-			else
-			{
-				transform.position -= transform.right * negativeSpeed * Time.deltaTime;
-			}
-			HandleDustTrail();
+        if (playingGame)
+        {
+            HandleInput();
+            HandleTilt();
+            if (speed > 0)
+            {
+                transform.position += transform.right * speed * Time.deltaTime;
+            }
+            else
+            {
+                transform.position -= transform.right * negativeSpeed * Time.deltaTime;
+            }
+            HandleDustTrail();
+        }
+        else
+        {
+            speed = 0;
+            HandleDustTrail();
+        }
+			
     }
 
     private void HandleTilt()

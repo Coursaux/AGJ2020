@@ -463,5 +463,56 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3955223040232260108, guid: 3757a5684bf5b984d9e46b76c99b0586, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.0000076293945
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955223040232260108, guid: 3757a5684bf5b984d9e46b76c99b0586, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -5.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955223040232260108, guid: 3757a5684bf5b984d9e46b76c99b0586, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 551.51483
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955223040232260108, guid: 3757a5684bf5b984d9e46b76c99b0586, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 73.09995
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955223040232260109, guid: 3757a5684bf5b984d9e46b76c99b0586, type: 3}
+      propertyPath: m_text
+      value: 'Get to Berta''s Egg As Fast as possible to try and save it
+
+
+        Player
+        1 uses A and D to move Berta Left and Right, and jumps with W or Spacebar.
+
+        Player
+        2 uses Up and Down to move Berta''s Head Up and Down
+
+
+        If Berta''s
+        Head is all the way down, she''ll hurt herself by falling off balance
+
+
+        Avoid
+        Meteors, Move Fast Enough to run through Tar Pits and rock walls'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955223040232260109, guid: 3757a5684bf5b984d9e46b76c99b0586, type: 3}
+      propertyPath: m_fontSize
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955223040232260109, guid: 3757a5684bf5b984d9e46b76c99b0586, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955223040232260109, guid: 3757a5684bf5b984d9e46b76c99b0586, type: 3}
+      propertyPath: m_fontStyle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955223040232260109, guid: 3757a5684bf5b984d9e46b76c99b0586, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3757a5684bf5b984d9e46b76c99b0586, type: 3}

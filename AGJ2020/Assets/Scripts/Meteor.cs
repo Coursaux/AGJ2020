@@ -32,7 +32,7 @@ public class Meteor : MonoBehaviour
         this.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
         if (camera != null)
         {
-            camera.ShakeCamera(0.5f, 0.05f);
+            camera.ShakeCamera(0.1f, 0.05f);
         }
         Destroy(this.gameObject, 2.0f);
     }
