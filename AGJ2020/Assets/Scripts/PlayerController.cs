@@ -87,6 +87,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public float GetSpeedFactor()
+    {
+        if (speed > 0)
+        {
+            return speed / maxSpeed;
+        } else
+        {
+            return -(negativeSpeed / maxSpeed);
+        }
+    }
+
     /*  
     //Check if Grounded 
     private bool checkGrounded() {
