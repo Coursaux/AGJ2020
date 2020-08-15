@@ -6,10 +6,12 @@ public class Meteor : MonoBehaviour
 {
     public float damage = 20;
 
+    private CameraFollow camera;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        camera = Camera.main.GetComponent<CameraFollow>();
     }
 
     // Update is called once per frame
@@ -28,6 +30,10 @@ public class Meteor : MonoBehaviour
         this.gameObject.GetComponent<ParticleSystem>().Play();
         this.gameObject.GetComponent<MeshRenderer>().enabled = false;
         this.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
-        Destroy(this, 2.0f);
+        if (camera != null)
+        {
+            camera.ShakeCamera(0.5f, 0.05f);
+        }
+        Destroy(this.gameObject, 2.0f);
     }
 }

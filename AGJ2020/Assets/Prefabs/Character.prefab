@@ -224,6 +224,7 @@ GameObject:
   - component: {fileID: 564474127365192356}
   - component: {fileID: 564474127365192359}
   - component: {fileID: 564474127365192377}
+  - component: {fileID: -7134124700197762763}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -358,6 +359,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalHealth: 100
+  playAgainCanvas: {fileID: 0}
+--- !u!114 &-7134124700197762763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564474127365192358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13c0de2b86d71484e8d6beea0d67442a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxTime: 30
+  minTime: 10
+  spawnHeight: 100
+  spawnDistanceRange: 40
+  meteor: {fileID: 6932520927746917122, guid: 909d0683de564a942addde5dc71b1a1d, type: 3}
 --- !u!1 &1947703291607523590
 GameObject:
   m_ObjectHideFlags: 0
