@@ -35,5 +35,7 @@ public class Meteor : MonoBehaviour
             camera.ShakeCamera(0.5f, 0.05f);
         }
         Destroy(this.gameObject, 2.0f);
+        for (int i =0; i <= 4; i++)
+            Destroy(this.gameObject.transform.GetChild(i).gameObject);
     }
 }
