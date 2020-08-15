@@ -17,7 +17,6 @@ public class CameraFollow : MonoBehaviour
 
     private void Start()
     {
-        ShakeCamera();
     }
     // Update is called once per frame
     void Update()
@@ -34,7 +33,7 @@ public class CameraFollow : MonoBehaviour
         
     }
 
-    private void ShakeCamera()
+    public void ShakeCamera()
     {
         StartCoroutine(ShakeCoroutine());
     }
