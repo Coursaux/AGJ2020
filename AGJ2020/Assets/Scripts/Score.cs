@@ -29,7 +29,7 @@ public class Score : MonoBehaviour
 
     private void Start()
     {
-        highScore = Mathf.Infinity;
+        highScore = 5999.99f;
     }
 
     // Update is called once per frame
@@ -52,15 +52,16 @@ public class Score : MonoBehaviour
         return minutes.ToString("00") + ":" + seconds.ToString("00") + ":" + milliseconds.ToString("00");
     }
 
-    public void EndTimer()
+    public void EndTimer(bool hasWon)
     {
         playAgainCanvas = FindObjectOfType<PlayAgain>();
-        if (currentTime < highScore)
+        float timeToRecord = currentTime;
+        if (timeToRecord < highScore && hasWon)
         {
-            highScore = currentTime;
+            highScore = timeToRecord;
         }
         print(highScore);
-        playAgainCanvas.currentScore.text = FormatTime(currentTime);
+        playAgainCanvas.currentScore.text = FormatTime(timeToRecord);
         playAgainCanvas.highScore.text = FormatTime(highScore);
         scoreCanvas.enabled = false;
     }

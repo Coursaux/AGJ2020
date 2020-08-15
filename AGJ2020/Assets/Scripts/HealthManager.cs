@@ -40,7 +40,13 @@ public class HealthManager : MonoBehaviour
         {
             gameObject.SetActive(false);
             playAgainCanvas.Show();
-            score.EndTimer();
+            score.EndTimer(false);
         }
+    }
+
+    public void WinGame()
+    {
+        playAgainCanvas.Show();
+        score.EndTimer(true);
     }
 }
