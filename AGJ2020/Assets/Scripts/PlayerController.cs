@@ -15,11 +15,16 @@ public class PlayerController : MonoBehaviour
     public float friction;
 
     [SerializeField] float tiltFactor = 0.1f;
+    [SerializeField] float requiredDustSpeed = 3f;
 
-    Head head;
+    [SerializeField] ParticleSystem dustTrail;
+
+    public Head head;
 
     private float speed;
     private float negativeSpeed;
+
+    private bool playingGame = false;
 
     public float GetSpeed()
     {
@@ -49,16 +54,17 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        HandleInput();
-        HandleTilt();
-        if (speed > 0)
-        {
-            transform.position += transform.right * speed * Time.deltaTime;
-        }
-        else 
-        {
-            transform.position -= transform.right * negativeSpeed * Time.deltaTime;
-        }
+			HandleInput();
+			HandleTilt();
+			if (speed > 0)
+			{
+				transform.position += transform.right * speed * Time.deltaTime;
+			}
+			else
+			{
+				transform.position -= transform.right * negativeSpeed * Time.deltaTime;
+			}
+			HandleDustTrail();
     }
 
     private void HandleTilt()
@@ -100,7 +106,6 @@ public class PlayerController : MonoBehaviour
         //Jumping
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W))
         {   
-            print(checkGrounded());
             if (checkGrounded())
             {
                 rb.AddForce(Vector3.up*jumpForce);
@@ -169,5 +174,11 @@ public class PlayerController : MonoBehaviour
             -Vector3.up,
             distToGround + 0.1f
         );
+    }
+
+    private void HandleDustTrail()
+    {
+        var emission = dustTrail.emission;
+        emission.enabled = speed > requiredDustSpeed || negativeSpeed > requiredDustSpeed;
     }
 }

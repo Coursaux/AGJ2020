@@ -33,12 +33,15 @@ public class TarPit : MonoBehaviour
         float speed = controller.GetSpeed();
         float negativeSpeed = controller.GetNegativeSpeed();
 
-        if (speed == 10 && negativeSpeed == 10)
+        if (speed == controller.maxSpeed || negativeSpeed == controller.maxSpeed)
             return;
 
         controller.SetSpeed(speed/frictionMultiplier);
         controller.SetNegativeSpeed(negativeSpeed/frictionMultiplier);
 
-        controller.gameObject.GetComponent<HealthManager>().TakeDamage(0.5f);
+        if (speed == 0)
+        {
+            controller.gameObject.GetComponent<HealthManager>().TakeDamage(0.5f);
+        }
     }
 }
