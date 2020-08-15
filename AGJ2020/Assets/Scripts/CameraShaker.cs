@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class CameraShaker : MonoBehaviour
 {
-    bool cameraShaking;
+    private Vector3 velocity = Vector3.zero;
+
 
     public void ShakeCamera(float shakeDuration, float shakeIntensity)
     {
@@ -13,7 +14,6 @@ public class CameraShaker : MonoBehaviour
 
     IEnumerator ShakeCoroutine(float shakeDuration, float shakeIntensity)
     {
-        cameraShaking = true;
         Vector3 originalPosition = transform.position;
         while (shakeDuration > 0)
         {
@@ -21,7 +21,6 @@ public class CameraShaker : MonoBehaviour
             shakeDuration -= Time.deltaTime;
             yield return new WaitForSeconds(Time.deltaTime);
         }
-        transform.position = originalPosition;
-        cameraShaking = false;
+        transform.localPosition = new Vector3(0f, 0f, 0f);
     }
 }
