@@ -21,6 +21,26 @@ public class PlayerController : MonoBehaviour
     private float speed;
     private float negativeSpeed;
 
+    public float GetSpeed()
+    {
+        return speed;
+    }
+
+    public float GetNegativeSpeed()
+    {
+        return negativeSpeed;
+    } 
+
+    public void SetSpeed(float inSpeed)
+    {
+        speed = inSpeed;
+    }
+
+    public void SetNegativeSpeed(float inNegativeSpeed)
+    {
+        negativeSpeed = inNegativeSpeed;
+    }
+
     void Start () 
     {
         rb = GetComponent<Rigidbody>();
@@ -54,6 +74,8 @@ public class PlayerController : MonoBehaviour
                 speed -= tiltValue*(speed/maxSpeed);
             } else {
                 negativeSpeed += tiltValue*(negativeSpeed/maxSpeed);
+                if (negativeSpeed > 10)
+                    negativeSpeed = 10;
             }
         }
         else
