@@ -15,6 +15,9 @@ public class PlayerController : MonoBehaviour
     public float friction;
 
     [SerializeField] float tiltFactor = 0.1f;
+    [SerializeField] float requiredDustSpeed = 3f;
+
+    [SerializeField] ParticleSystem dustTrail;
 
     public Head head;
 
@@ -59,6 +62,7 @@ public class PlayerController : MonoBehaviour
         {
             transform.position -= transform.right * negativeSpeed * Time.deltaTime;
         }
+        HandleDustTrail();
     }
 
     private void HandleTilt()
@@ -168,5 +172,11 @@ public class PlayerController : MonoBehaviour
             -Vector3.up,
             distToGround + 0.1f
         );
+    }
+
+    private void HandleDustTrail()
+    {
+        var emission = dustTrail.emission;
+        emission.enabled = speed > requiredDustSpeed || negativeSpeed > requiredDustSpeed;
     }
 }
