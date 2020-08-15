@@ -10,8 +10,8 @@ public class Head : MonoBehaviour
 
     [SerializeField] float speedFactor = 0.1f;
 
-    float currentUpAcceleration = 0f;
-    float currentDownAcceleration = 0f;
+    public float currentUpAcceleration = 0f;
+    public float currentDownAcceleration = 0f;
 
     HealthManager healthManager;
     [SerializeField] float tiltDamage = 0.5f;
@@ -38,7 +38,7 @@ public class Head : MonoBehaviour
         AddRandomTilt();
         AddSpeedTilt();
         tiltFactor += (currentUpAcceleration - currentDownAcceleration) * Time.deltaTime;
-        tiltFactor = Mathf.Clamp(tiltFactor, 0f, 1f);
+        tiltFactor = Mathf.Clamp(tiltFactor, 0f, 0.9f);
         currentUpAcceleration = Mathf.Clamp(currentUpAcceleration, -1f, 1f);
         currentDownAcceleration = Mathf.Clamp(currentDownAcceleration, -1f, 1f);
     }

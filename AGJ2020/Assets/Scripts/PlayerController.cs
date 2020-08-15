@@ -18,8 +18,8 @@ public class PlayerController : MonoBehaviour
 
     Head head;
 
-    private float speed;
-    private float negativeSpeed;
+    public float speed;
+    public float negativeSpeed;
 
     public float GetSpeed()
     {
@@ -74,8 +74,8 @@ public class PlayerController : MonoBehaviour
                 speed -= tiltValue*(speed/maxSpeed);
             } else {
                 negativeSpeed += tiltValue*(negativeSpeed/maxSpeed);
-                if (negativeSpeed > 10)
-                    negativeSpeed = 10;
+                if (negativeSpeed > maxSpeed)
+                    negativeSpeed = maxSpeed;
             }
         }
         else
@@ -116,8 +116,8 @@ public class PlayerController : MonoBehaviour
 
             speed += speed * acceleration * Time.deltaTime;
 
-            if (speed > 10)
-                speed = 10f;
+            if (speed > maxSpeed)
+                speed = maxSpeed;
         }
 
         else if (Input.GetKey(KeyCode.A) && speed == 0)
@@ -130,8 +130,8 @@ public class PlayerController : MonoBehaviour
 
             negativeSpeed += negativeSpeed * acceleration * Time.deltaTime;
 
-            if (negativeSpeed > 10)
-                negativeSpeed = 10f;
+            if (negativeSpeed > maxSpeed)
+                negativeSpeed = maxSpeed;
         }
 
         else
