@@ -21,6 +21,7 @@ public class CameraShaker : MonoBehaviour
             shakeDuration -= Time.deltaTime;
             yield return new WaitForSeconds(Time.deltaTime);
         }
+        transform.position = originalPosition;
         cameraShaking = false;
     }
 }
