@@ -16,6 +16,8 @@ public class Head : MonoBehaviour
     HealthManager healthManager;
     [SerializeField] float tiltDamage = 0.5f;
 
+    public bool playingGame = true;
+
 
     // Start is called before the first frame update
     void Start()                                                                                                 
@@ -26,10 +28,13 @@ public class Head : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateTiltFactor();
-        CheckTiltDamage();
-        //applies the tilt factor to the head
-        transform.rotation = Quaternion.Lerp(Quaternion.Euler(0f, 0f, -90f), Quaternion.Euler(0f, 0f, 90f), tiltFactor);
+        if(playingGame)
+        {
+            UpdateTiltFactor();
+            CheckTiltDamage();
+            //applies the tilt factor to the head
+            transform.rotation = Quaternion.Lerp(Quaternion.Euler(0f, 0f, -90f), Quaternion.Euler(0f, 0f, 90f), tiltFactor);
+        }
     }
 
     private void UpdateTiltFactor()

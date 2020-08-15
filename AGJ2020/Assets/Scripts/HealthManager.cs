@@ -23,7 +23,8 @@ public class HealthManager : MonoBehaviour
     {
         currentHealth -= damage;
         print(currentHealth);
-        //cameraShaker.ShakeCamera(0.5f, 1);
+        cameraShaker.ShakeCamera(0.1f, 0.5f);
+
         die();
     }
 

@@ -54,7 +54,7 @@ public class RockWall : MonoBehaviour
     {
         if (isBreakable)
         {
-            player.SetSpeed(player.GetSpeed() / 1.1f);
+            player.SetSpeed(player.GetSpeed() / 1.5f);
             Destroy(gameObject);
 
         } else

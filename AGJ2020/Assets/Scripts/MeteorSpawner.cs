@@ -8,10 +8,10 @@ public class MeteorSpawner : MonoBehaviour
     public float minTime = 10;
 
     public float spawnHeight = 100;
-    public float spawnDistanceRange = 40;
+    public float spawnDistanceRange = 10;
 
     private float lastSpawn = 0;
-    private float nextSpawn = 30;
+    private float nextSpawn = 5;
 
     public GameObject meteor;
 
@@ -40,7 +40,6 @@ public class MeteorSpawner : MonoBehaviour
 
             lastSpawn = Time.time;
             nextSpawn = Random.Range(minTime, maxTime);
-            print("spawned");
         }
     }
 }

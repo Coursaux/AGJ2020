@@ -114,6 +114,7 @@ MonoBehaviour:
   downAcceleration: 0.001
   speedFactor: 0.001
   tiltDamage: 0.5
+  playingGame: 1
 --- !u!1 &564474126540505093
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,6 +347,7 @@ MonoBehaviour:
   requiredDustSpeed: 3
   dustTrail: {fileID: 3899107941721916887}
   head: {fileID: 564474125727689758}
+  playingGame: 1
 --- !u!114 &564474127365192377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359,7 +361,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalHealth: 100
-  playAgainCanvas: {fileID: 0}
 --- !u!114 &-7134124700197762763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -372,10 +373,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c0de2b86d71484e8d6beea0d67442a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTime: 30
-  minTime: 10
+  maxTime: 2
+  minTime: 1
   spawnHeight: 100
-  spawnDistanceRange: 40
+  spawnDistanceRange: 5
   meteor: {fileID: 6932520927746917122, guid: 909d0683de564a942addde5dc71b1a1d, type: 3}
 --- !u!1 &1947703291607523590
 GameObject:
