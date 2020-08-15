@@ -33,7 +33,7 @@ public class Head : MonoBehaviour
         ProcessTiltInput();
         AddRandomTilt();
         AddSpeedTilt();
-        tiltFactor += (currentDownAcceleration - currentUpAcceleration) * Time.deltaTime;
+        tiltFactor += (currentUpAcceleration - currentDownAcceleration) * Time.deltaTime;
         tiltFactor = Mathf.Clamp(tiltFactor, 0f, 1f);
         currentUpAcceleration = Mathf.Clamp(currentUpAcceleration, -1f, 1f);
         currentDownAcceleration = Mathf.Clamp(currentDownAcceleration, -1f, 1f);
@@ -73,8 +73,7 @@ public class Head : MonoBehaviour
 
     private void AddSpeedTilt()
     {
-        //float speed = FindObjectOfType<Legs>().GetSpeedFactor(); float between -1f and 1f;
-        float speed = 0f;
+        float speed = FindObjectOfType<PlayerController>().GetSpeedFactor();
         float randomSpeedValue = 0f;
         if (speed > 0)
         {
@@ -84,7 +83,7 @@ public class Head : MonoBehaviour
         {
             randomSpeedValue = Random.Range(speed, 0f);
         }
-        tiltFactor += randomSpeedValue * speedFactor;
+        tiltFactor -= ((randomSpeedValue*randomSpeedValue) * speedFactor);
     }
 
     public float GetTiltFactor() // returns value between 0 and 1;
