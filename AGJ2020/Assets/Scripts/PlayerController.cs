@@ -188,6 +188,6 @@ public class PlayerController : MonoBehaviour
     private void HandleDustTrail()
     {
         var emission = dustTrail.emission;
-        emission.enabled = speed > requiredDustSpeed || negativeSpeed > requiredDustSpeed;
+        emission.enabled = ((speed > requiredDustSpeed || negativeSpeed > requiredDustSpeed) && checkGrounded());
     }
 }
