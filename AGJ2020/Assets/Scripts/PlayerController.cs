@@ -96,12 +96,13 @@ public class PlayerController : MonoBehaviour
     void HandleInput () 
     {
         //Jumping
-        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.W))
-        {/*
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W))
+        {   
+            print(checkGrounded());
             if (checkGrounded())
             {
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            }*/
+                rb.AddForce(Vector3.up*jumpForce);
+            }
         }
 
         //Left Right Movement
@@ -158,17 +159,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    /*  
-    //Check if Grounded 
     private bool checkGrounded() {
-        float distToGround = GetComponent<CapsuleCollider2D>().bounds.extents.y;
-        RaycastHit2D collision = Physics2D.Raycast(
-            transform.position, 
-            Vector2.down, 
-            distToGround + 0.1f, 
-            LayerMask.GetMask("Ground")
+        BoxCollider collider = GetComponent<BoxCollider>();
+        float distToGround = collider.bounds.extents.y;
+        return Physics.Raycast(
+            transform.position,
+            -Vector3.up,
+            distToGround + 0.1f
         );
-
-        return (collision.collider != null);
-    }*/
+    }
 }
