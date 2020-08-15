@@ -4,27 +4,31 @@ using UnityEngine;
 
 public class Head : MonoBehaviour
 {
-    public float tiltFactor = 1f;
+    public float tiltFactor = 0.5f;
     [SerializeField] float upAcceleration = 0.001f;
     [SerializeField] float downAcceleration = 0.001f;
 
-    [SerializeField] float randomFactor = 0.5f;
     [SerializeField] float speedFactor = 0.1f;
 
     float currentUpAcceleration = 0f;
     float currentDownAcceleration = 0f;
 
+    HealthManager healthManager;
+    [SerializeField] float tiltDamage = 0.5f;
+
 
     // Start is called before the first frame update
     void Start()                                                                                                 
     {
-        
+        healthManager = FindObjectOfType<HealthManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
         UpdateTiltFactor();
+        CheckTiltDamage();
+        //applies the tilt factor to the head
         transform.rotation = Quaternion.Lerp(Quaternion.Euler(0f, 0f, -90f), Quaternion.Euler(0f, 0f, 90f), tiltFactor);
     }
 
@@ -39,6 +43,7 @@ public class Head : MonoBehaviour
         currentDownAcceleration = Mathf.Clamp(currentDownAcceleration, -1f, 1f);
     }
 
+    //Calculates acceleration from up and down arrow keys
     private void ProcessTiltInput()
     {
         if (Input.GetKey(KeyCode.DownArrow))
@@ -59,6 +64,7 @@ public class Head : MonoBehaviour
         }
     }
 
+    //adds a bit of randomness to whatever the direction the head is already tilting
     private void AddRandomTilt()
     {
         if (currentDownAcceleration > currentUpAcceleration)
@@ -71,6 +77,7 @@ public class Head : MonoBehaviour
         }
     }
 
+    //takes the speed from the legs to tilt the head
     private void AddSpeedTilt()
     {
         float speed = FindObjectOfType<PlayerController>().GetSpeedFactor();
@@ -86,7 +93,17 @@ public class Head : MonoBehaviour
         tiltFactor -= ((randomSpeedValue) * speedFactor);
     }
 
-    public float GetTilt() // returns value between 0 and 1;
+    //damages the player if the head is tilted all the way down
+    private void CheckTiltDamage()
+    {
+        if (tiltFactor == 0)
+        {
+            healthManager.TakeDamage(tiltDamage);
+        }
+    }
+    
+    // returns value between 0 and 1;
+    public float GetTilt() 
     {
         return tiltFactor;                                                          
     }
