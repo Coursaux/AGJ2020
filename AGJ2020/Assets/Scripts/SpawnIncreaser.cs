@@ -6,6 +6,10 @@ public class SpawnIncreaser : MonoBehaviour
 {
     PlayerController player;
     MeteorSpawner spawner;
+
+    [SerializeField] float minTime;
+    [SerializeField] float maxTime;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +19,7 @@ public class SpawnIncreaser : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        spawner.minTime = 0.1f;
-        spawner.maxTime = 1f;
+        spawner.minTime = minTime;
+        spawner.maxTime = maxTime;
     }
 }

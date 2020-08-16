@@ -9742,7 +9742,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffe287ed129b14340b40e147159830df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
+  damage: 30
+  meteorCrash: {fileID: 0}
+  meteorFall: {fileID: 0}
 --- !u!23 &-793306289044685816
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -19818,7 +19820,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -19871,7 +19873,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:

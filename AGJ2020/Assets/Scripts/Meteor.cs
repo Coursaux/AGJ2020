@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Meteor : MonoBehaviour
 {
-    public float damage = 20;
+    public float damage = 30;
 
     private CameraFollow camera;
 
