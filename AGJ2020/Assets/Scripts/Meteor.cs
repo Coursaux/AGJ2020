@@ -45,7 +45,7 @@ public class Meteor : MonoBehaviour
             audioSource.PlayOneShot(meteorCrash);
         }
         Destroy(this.gameObject, 2.0f);
-        for (int i =0; i <= 3; i++)
+        for (int i =0; i <= gameObject.transform.childCount-1; i++)
             Destroy(this.gameObject.transform.GetChild(i).gameObject);
     }
 }
