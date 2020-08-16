@@ -4798,7 +4798,7 @@ PrefabInstance:
 
 
         Break
-        rocks by running or jumping into the brekable parts fast enough with your
+        rocks by running or jumping into the breakable parts fast enough with your
         head down. Avoid crashing meteors, slowing tar pits and scorching fire.'
       objectReference: {fileID: 0}
     - target: {fileID: 3955223040232260109, guid: 3757a5684bf5b984d9e46b76c99b0586, type: 3}
