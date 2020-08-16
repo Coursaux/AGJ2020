@@ -14,12 +14,22 @@ public class HealthManager : MonoBehaviour
     [SerializeField] Material bgImage;
     [SerializeField] Material fgImage;
 
+
+    ClipPlayer clipPlayer;
+    AudioSource audioSource;
+
+    [SerializeField] AudioClip dinoHurt;
+    [SerializeField] AudioClip dinoDie;
+
+
     void Start()
     {
         currentHealth = totalHealth;
         cameraShaker = FindObjectOfType<CameraFollow>();
         playAgainCanvas = FindObjectOfType<PlayAgain>();
         score = FindObjectOfType<Score>();
+        clipPlayer = FindObjectOfType<ClipPlayer>();
+        audioSource = clipPlayer.GetComponent<AudioSource>();
         playAgainCanvas.Hide();
     }
 
@@ -29,6 +39,7 @@ public class HealthManager : MonoBehaviour
         print(currentHealth);
         cameraShaker.ShakeCamera(0.1f, 0.5f);
         guiEnabled = true;
+        audioSource.PlayOneShot(dinoHurt);
         Invoke("HideGUI", 2f);
         die();
     }
@@ -50,6 +61,7 @@ public class HealthManager : MonoBehaviour
         if (currentHealth <= 0)
         {
             currentHealth = 0;
+            audioSource.PlayOneShot(dinoDie);
             gameObject.SetActive(false);
             playAgainCanvas.Show();
             score.EndTimer(false);
