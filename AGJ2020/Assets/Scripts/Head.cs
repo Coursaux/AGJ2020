@@ -24,7 +24,6 @@ public class Head : MonoBehaviour
     {
         healthManager = FindObjectOfType<HealthManager>();
     }
-
     // Update is called once per frame
     void Update()
     {

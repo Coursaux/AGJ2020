@@ -349,7 +349,7 @@ MonoBehaviour:
   dustTrail: {fileID: 3899107941721916887}
   dinoRun: {fileID: 8300000, guid: 3a8d6cf26aeab3b40a19b4daaf7368b5, type: 3}
   dinoJump: {fileID: 8300000, guid: ae8e9def75ac3f34dac479c335abcef7, type: 3}
-  head: {fileID: 564474125727689758}
+  head: {fileID: 0}
   playingGame: 1
 --- !u!114 &-7134124700197762763
 MonoBehaviour:
