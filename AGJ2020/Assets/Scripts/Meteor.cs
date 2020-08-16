@@ -39,7 +39,7 @@ public class Meteor : MonoBehaviour
         this.gameObject.GetComponent<MeshRenderer>().enabled = false;
         this.gameObject.GetComponent<SphereCollider>().enabled = false;
         this.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
-        if (camera != null)
+        if (camera != null && Vector3.Distance(camera.transform.position, transform.position) < 100f)
         {
             camera.ShakeCamera(0.5f, 0.05f);
             audioSource.clip = meteorCrash;
