@@ -33,12 +33,14 @@ public class PlayAgain : MonoBehaviour
 
     public void PlayAgainClick()
     {
-        scoreCanvas.enabled = true;
+        Hide();
         SceneManager.LoadScene(1);
+        scoreCanvas.enabled = true;
     }
-    
+
     public void MainMenuClick()
     {
+        Hide();
         SceneManager.LoadScene(0);
     }
 
