@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class Fire : MonoBehaviour
 {
-public float damage = 0.5f;
+    public float damage = 0.5f;
+
+    ClipPlayer clipPlayer;
+    AudioSource audioSource;
+
+    [SerializeField] AudioClip fireBurn;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        clipPlayer = FindObjectOfType<ClipPlayer>();
+        audioSource = clipPlayer.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -24,6 +30,7 @@ public float damage = 0.5f;
         if (collision.gameObject.name == "Character")
         {   
             collision.gameObject.GetComponent<HealthManager>().TakeDamage(damage);
+            audioSource.PlayOneShot(fireBurn);
         }
     }
 }

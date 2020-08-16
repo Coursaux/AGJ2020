@@ -6,16 +6,16 @@ public class TarPit : MonoBehaviour
 {
     public float frictionMultiplier = 1.1f;
 
+    ClipPlayer clipPlayer;
+    AudioSource audioSource;
+
+    [SerializeField] AudioClip tarWalk;
+
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        clipPlayer = FindObjectOfType<ClipPlayer>();
+        audioSource = clipPlayer.GetComponent<AudioSource>();
     }
 
     void OnTriggerStay(Collider collision)
@@ -42,6 +42,9 @@ public class TarPit : MonoBehaviour
         if (speed == 0)
         {
             controller.gameObject.GetComponent<HealthManager>().TakeDamage(0.5f);
+        } else
+        {
+            audioSource.PlayOneShot(tarWalk);
         }
     }
 }
