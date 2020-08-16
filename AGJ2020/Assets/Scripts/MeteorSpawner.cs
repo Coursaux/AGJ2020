@@ -29,6 +29,7 @@ public class MeteorSpawner : MonoBehaviour
 
     void spawn()
     {
+        nextSpawn = Random.Range(minTime, maxTime);
         if (Time.time > lastSpawn + nextSpawn)
         {
             Vector3 position = transform.position;
