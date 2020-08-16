@@ -9,9 +9,16 @@ public class Wall : MonoBehaviour
     Head head;
     [SerializeField] float damage = 30f;
 
+    ClipPlayer clipPlayer;
+    AudioSource audioSource;
+
+    [SerializeField] AudioClip treeHit;
+
     void Start()
     {
         player = FindObjectOfType<PlayerController>();
+        clipPlayer = FindObjectOfType<ClipPlayer>();
+        audioSource = clipPlayer.GetComponent<AudioSource>();
         FetchHead();
     }
     void Update()
@@ -36,6 +43,7 @@ public class Wall : MonoBehaviour
             player.SetNegativeSpeed(0f);
             player.SetSpeed(4f);
         }
+        audioSource.PlayOneShot(treeHit);
         player.GetComponent<HealthManager>().TakeDamage(damage);
 
     }

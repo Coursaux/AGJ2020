@@ -8,16 +8,25 @@ public class Meteor : MonoBehaviour
 
     private CameraFollow camera;
 
+    ClipPlayer clipPlayer;
+    AudioSource audioSource;
+
+    [SerializeField] AudioClip meteorCrash;
+    [SerializeField] AudioClip meteorFall;
+
     // Start is called before the first frame update
     void Start()
     {
         camera = Camera.main.GetComponent<CameraFollow>();
+        clipPlayer = FindObjectOfType<ClipPlayer>();
+        audioSource = clipPlayer.GetComponent<AudioSource>();
+        audioSource.PlayOneShot(meteorFall);
     }
 
     // Update is called once per frame
     void Update()
     {
-            
+           
     }
 
     void OnTriggerEnter(Collider collision)
@@ -33,9 +42,10 @@ public class Meteor : MonoBehaviour
         if (camera != null)
         {
             camera.ShakeCamera(0.5f, 0.05f);
+            audioSource.PlayOneShot(meteorCrash);
         }
         Destroy(this.gameObject, 2.0f);
-        for (int i =0; i <= 4; i++)
+        for (int i =0; i <= 3; i++)
             Destroy(this.gameObject.transform.GetChild(i).gameObject);
     }
 }

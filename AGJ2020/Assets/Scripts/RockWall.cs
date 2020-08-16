@@ -14,10 +14,19 @@ public class RockWall : MonoBehaviour
     [SerializeField] float requiredTilt = 0.65f;
     [SerializeField] float damage = 30f;
     // Start is called before the first frame update
+
+    ClipPlayer clipPlayer;
+    AudioSource audioSource;
+
+    [SerializeField] AudioClip treeBreak;
+    [SerializeField] AudioClip treeHit;
+
     void Start()
     {
         player = FindObjectOfType<PlayerController>();
         FetchHead();
+        clipPlayer = FindObjectOfType<ClipPlayer>();
+        audioSource = clipPlayer.GetComponent<AudioSource>();
         isBreakable = false;
     }
 
@@ -56,12 +65,14 @@ public class RockWall : MonoBehaviour
         {
             player.SetSpeed(player.GetSpeed() / 1.5f);
             Destroy(gameObject);
-
+            audioSource.PlayOneShot(treeBreak);
         } else
         {
             player.SetSpeed(0);
             player.SetNegativeSpeed(4);
             player.GetComponent<HealthManager>().TakeDamage(damage);
+            audioSource.PlayOneShot(treeBreak);
+
         }
     }
 }
