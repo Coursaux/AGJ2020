@@ -6,9 +6,8 @@ public class Meteor : MonoBehaviour
 {
     public float damage = 30;
 
-    private CameraFollow camera;
+    private CameraShaker camera;
 
-    ClipPlayer clipPlayer;
     AudioSource audioSource;
 
     [SerializeField] AudioClip meteorCrash;
@@ -17,10 +16,10 @@ public class Meteor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        camera = Camera.main.GetComponent<CameraFollow>();
-        clipPlayer = FindObjectOfType<ClipPlayer>();
-        audioSource = clipPlayer.GetComponent<AudioSource>();
-        audioSource.PlayOneShot(meteorFall);
+        camera = FindObjectOfType<CameraShaker>();
+        audioSource = gameObject.GetComponent<AudioSource>();
+        audioSource.clip = meteorFall;
+        audioSource.Play();
     }
 
     // Update is called once per frame
@@ -34,7 +33,7 @@ public class Meteor : MonoBehaviour
         //Check for a match with the specified name on any GameObject that collides with your GameObject
         if (collision.gameObject.name == "Character")                                                                                                                                                                                                               
         {   
-            collision.gameObject.GetComponent<HealthManager>().TakeDamage(damage);
+            collision.gameObject.GetComponentInChildren<HealthManager>().TakeDamage(damage);
         }
         this.gameObject.GetComponent<ParticleSystem>().Play();
         this.gameObject.GetComponent<MeshRenderer>().enabled = false;
@@ -43,7 +42,8 @@ public class Meteor : MonoBehaviour
         if (camera != null)
         {
             camera.ShakeCamera(0.5f, 0.05f);
-            audioSource.PlayOneShot(meteorCrash);
+            audioSource.clip = meteorCrash;
+            audioSource.Play();
         }
         Destroy(this.gameObject, 2.0f);
         for (int i =0; i < gameObject.transform.childCount; i++)

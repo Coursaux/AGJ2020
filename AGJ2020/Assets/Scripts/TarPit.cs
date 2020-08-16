@@ -14,8 +14,9 @@ public class TarPit : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        clipPlayer = FindObjectOfType<ClipPlayer>();
-        audioSource = clipPlayer.GetComponent<AudioSource>();
+        audioSource = gameObject.GetComponent<AudioSource>();
+        audioSource.clip = tarWalk;
+        audioSource.Play();
     }
 
     void OnTriggerStay(Collider collision)
@@ -41,10 +42,7 @@ public class TarPit : MonoBehaviour
 
         if (speed == 0)
         {
-            controller.gameObject.GetComponent<HealthManager>().TakeDamage(0.5f);
-        } else
-        {
-            audioSource.PlayOneShot(tarWalk);
-        }
+            controller.gameObject.GetComponentInChildren<HealthManager>().TakeDamage(0.5f);
+        } 
     }
 }

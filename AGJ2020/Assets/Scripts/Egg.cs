@@ -31,6 +31,6 @@ public class Egg : MonoBehaviour
         player.head.playingGame = false;
         player.GetComponent<MeteorSpawner>().minTime = Mathf.Infinity;
         player.GetComponent<MeteorSpawner>().maxTime = Mathf.Infinity;
-        player.GetComponent<HealthManager>().WinGame();
+        player.GetComponentInChildren<HealthManager>().WinGame();
     }
 }

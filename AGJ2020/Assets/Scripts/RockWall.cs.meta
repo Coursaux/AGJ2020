@@ -3,7 +3,10 @@ guid: f7badcb98c3c1864eb20207c0b60a1d1
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - player: {instanceID: 0}
+  - treeBreak: {fileID: 8300000, guid: c04a27f0562dc9a40a781f8c32a98e24, type: 3}
+  - treeHit: {fileID: 8300000, guid: b9fa7e99b16eea94c8f4f3a5ae203c01, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

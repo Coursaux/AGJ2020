@@ -16,6 +16,7 @@ public class HealthManager : MonoBehaviour
 
 
     ClipPlayer clipPlayer;
+    AudioSource clipAudioSource;
     AudioSource audioSource;
 
     [SerializeField] AudioClip dinoHurt;
@@ -29,7 +30,8 @@ public class HealthManager : MonoBehaviour
         playAgainCanvas = FindObjectOfType<PlayAgain>();
         score = FindObjectOfType<Score>();
         clipPlayer = FindObjectOfType<ClipPlayer>();
-        audioSource = clipPlayer.GetComponent<AudioSource>();
+        clipAudioSource = clipPlayer.GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
         playAgainCanvas.Hide();
     }
 
@@ -39,7 +41,11 @@ public class HealthManager : MonoBehaviour
         print(currentHealth);
         cameraShaker.ShakeCamera(0.1f, 0.5f);
         guiEnabled = true;
-        audioSource.PlayOneShot(dinoHurt);
+        if (!audioSource.isPlaying)
+        {
+            audioSource.clip = dinoHurt;
+            audioSource.Play();
+        }
         Invoke("HideGUI", 2f);
         die();
     }
@@ -61,8 +67,8 @@ public class HealthManager : MonoBehaviour
         if (currentHealth <= 0)
         {
             currentHealth = 0;
-            audioSource.PlayOneShot(dinoDie);
-            gameObject.SetActive(false);
+            clipAudioSource.PlayOneShot(dinoDie);
+            gameObject.transform.parent.gameObject.SetActive(false);
             playAgainCanvas.Show();
             score.EndTimer(false);
         }
