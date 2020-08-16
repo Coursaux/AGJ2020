@@ -14,10 +14,10 @@ public class CameraShaker : MonoBehaviour
 
     IEnumerator ShakeCoroutine(float shakeDuration, float shakeIntensity)
     {
-        Vector3 originalPosition = transform.position;
+        Vector3 originalPosition = transform.localPosition;
         while (shakeDuration > 0)
         {
-            transform.position = originalPosition + Random.insideUnitSphere * shakeIntensity;
+            transform.localPosition = originalPosition + Random.insideUnitSphere * shakeIntensity;
             shakeDuration -= Time.deltaTime;
             yield return new WaitForSeconds(Time.deltaTime);
         }
