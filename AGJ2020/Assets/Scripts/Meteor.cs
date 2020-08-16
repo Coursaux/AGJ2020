@@ -38,6 +38,7 @@ public class Meteor : MonoBehaviour
         }
         this.gameObject.GetComponent<ParticleSystem>().Play();
         this.gameObject.GetComponent<MeshRenderer>().enabled = false;
+        this.gameObject.GetComponent<SphereCollider>().enabled = false;
         this.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
         if (camera != null)
         {
