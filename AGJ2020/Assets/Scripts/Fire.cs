@@ -14,8 +14,9 @@ public class Fire : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        clipPlayer = FindObjectOfType<ClipPlayer>();
-        audioSource = clipPlayer.GetComponent<AudioSource>();
+        audioSource = gameObject.GetComponent<AudioSource>();
+        audioSource.clip = fireBurn;
+        audioSource.Play();
     }
 
     // Update is called once per frame
@@ -29,8 +30,7 @@ public class Fire : MonoBehaviour
         //Check for a match with the specified name on any GameObject that collides with your GameObject
         if (collision.gameObject.name == "Character")
         {   
-            collision.gameObject.GetComponent<HealthManager>().TakeDamage(damage);
-            audioSource.PlayOneShot(fireBurn);
+            collision.gameObject.GetComponentInChildren<HealthManager>().TakeDamage(damage);
         }
     }
 }

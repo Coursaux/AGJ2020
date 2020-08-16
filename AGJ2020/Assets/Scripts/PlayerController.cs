@@ -19,6 +19,12 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] ParticleSystem dustTrail;
 
+    [SerializeField] AudioClip dinoRun;
+    [SerializeField] AudioClip dinoJump;
+
+    ClipPlayer clipPlayer;
+    AudioSource audioSource;
+
     public Head head;
 
     private float speed;
@@ -50,6 +56,8 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         head = GetComponentInChildren<Head>();
+        clipPlayer = FindObjectOfType<ClipPlayer>();
+        audioSource = clipPlayer.GetComponent<AudioSource>();
     }
 
     void Update()
@@ -118,6 +126,7 @@ public class PlayerController : MonoBehaviour
             if (checkGrounded())
             {
                 rb.AddForce(Vector3.up*jumpForce);
+                audioSource.PlayOneShot(dinoJump);
             }
         }
 
@@ -189,5 +198,16 @@ public class PlayerController : MonoBehaviour
     {
         var emission = dustTrail.emission;
         emission.enabled = ((speed > requiredDustSpeed || negativeSpeed > requiredDustSpeed) && checkGrounded());
+        if (emission.enabled)
+        {
+            if (!gameObject.GetComponent<AudioSource>().isPlaying)
+            {
+                gameObject.GetComponent<AudioSource>().clip = dinoRun;
+                gameObject.GetComponent<AudioSource>().Play();
+            }
+        } else
+        {
+            gameObject.GetComponent<AudioSource>().Stop();
+        }
     }
 }

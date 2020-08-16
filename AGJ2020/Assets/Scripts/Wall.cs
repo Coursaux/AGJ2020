@@ -44,7 +44,7 @@ public class Wall : MonoBehaviour
             player.SetSpeed(4f);
         }
         audioSource.PlayOneShot(treeHit);
-        player.GetComponent<HealthManager>().TakeDamage(damage);
+        player.GetComponentInChildren<HealthManager>().TakeDamage(damage);
 
     }
 }

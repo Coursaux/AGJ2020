@@ -64,15 +64,14 @@ public class RockWall : MonoBehaviour
         if (isBreakable)
         {
             player.SetSpeed(player.GetSpeed() / 1.5f);
-            Destroy(gameObject);
             audioSource.PlayOneShot(treeBreak);
+            Destroy(gameObject);
         } else
         {
             player.SetSpeed(0);
             player.SetNegativeSpeed(4);
-            player.GetComponent<HealthManager>().TakeDamage(damage);
-            audioSource.PlayOneShot(treeBreak);
-
+            player.GetComponentInChildren<HealthManager>().TakeDamage(damage);
+            audioSource.PlayOneShot(treeHit);
         }
     }
 }
